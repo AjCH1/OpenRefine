@@ -244,12 +244,17 @@ public class ImportingUtilities {
             InputStream stream = fileItem.getInputStream();
 
             String name = fileItem.getFieldName().toLowerCase();
-            if (fileItem.isFormField()) {
+            if (fileItem.isFormField()) { //261P: type in clipboard
                 if (name.equals("clipboard")) {
+
+                    System.out.println("261P TESTING");
+
                     String encoding = request.getCharacterEncoding();
                     if (encoding == null) {
                         encoding = "UTF-8";
                     }
+
+                    System.out.println("TYPE: " + request.getContentLength());
 
                     File file = allocateFile(rawDataDir, "clipboard.txt");
 
